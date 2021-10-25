@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class DogAdapter( private val dataset: ArrayList<Service>) :
+class DogAdapter( private val dataset: ArrayList<DogImage>) :
         RecyclerView.Adapter<DogAdapter.ViewHolder>() {
 
     // Specify which layout to use for each item inside the recyclerview

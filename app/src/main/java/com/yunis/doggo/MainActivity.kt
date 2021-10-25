@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchTerm: String
 
 
-    private val serviceList: ArrayList<Service> = ArrayList()
+    private val serviceList: ArrayList<DogImage> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,10 +40,10 @@ class MainActivity : AppCompatActivity() {
         // Instantiate the cache
         val cache = DiskBasedCache(cacheDir, 1024 * 1024) // 1MB cap
 
-// Set up the network to use HttpURLConnection as the HTTP client.
+        // Set up the network to use HttpURLConnection as the HTTP client.
         val network = BasicNetwork(HurlStack())
 
-// Instantiate the RequestQueue with the cache and network. Start the queue.
+        // Instantiate the RequestQueue with the cache and network. Start the queue.
         RequestQueue(cache, network).apply {
             start()
         }
@@ -54,14 +54,15 @@ class MainActivity : AppCompatActivity() {
 
             val url = "https://dog.ceo/api/breed/$searchTerm/images"
 
+            // Formulate the request and handle the response.
             val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
                     { response ->
 
-                        var imgUrl: JSONArray = response.getJSONArray("message")
+                        val imgUrl: JSONArray = response.getJSONArray("message")
 
                         for (i in 0 until imgUrl.length()) {
 
-                            serviceList.add(Service(imgUrl.getString(i)))
+                            serviceList.add(DogImage(imgUrl.getString(i)))
 
                         }
 
@@ -72,11 +73,11 @@ class MainActivity : AppCompatActivity() {
                     },
 
                     { error ->
-                        // TODO: Handle error
                         Toast.makeText(this, error.toString(), Toast.LENGTH_SHORT).show()
                     }
             )
-
+            // Access the RequestQueue through the singleton class.
+            // Add a request (called jsonObjectRequest) to the RequestQueue.
             MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
             serviceList.clear()
 
