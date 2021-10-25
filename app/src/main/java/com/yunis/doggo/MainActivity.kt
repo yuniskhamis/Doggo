@@ -14,7 +14,7 @@ import org.json.JSONArray
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var randomImageButton: Button
+    private lateinit var dogBreedButton: Button
     private lateinit var searchBreed: TextView
     private lateinit var searchTerm: String
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        randomImageButton = findViewById(R.id.button)
+        dogBreedButton = findViewById(R.id.button)
 
         searchBreed = findViewById(R.id.dog_breed_input)
 
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             start()
         }
 
-        randomImageButton.setOnClickListener {
+        dogBreedButton.setOnClickListener {
             searchTerm = searchBreed.text.toString()
 
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
                         adapter.notifyDataSetChanged()
 
-                        Toast.makeText(this, "New random image loaded", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "New images loaded", Toast.LENGTH_SHORT).show()
 
                     },
 
