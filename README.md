@@ -7,6 +7,4 @@ https://jsoneditoronline.org/#left=local.jepadu&right=local.naweha
 
 https://developer.android.com/training/volley
 
-https://developer.android.com/training/volley/requestqueue
-
-https://www.youtube.com/watch?v=japhFMXAJZw&list=WL&index=3&t=195s
+https://guides.codepath.com/android/Displaying-Images-with-the-Picasso-Library
